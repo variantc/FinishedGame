@@ -10,6 +10,7 @@ public class References : MonoBehaviour
     public Player player;
     
     public GameObject enemyPrefab;
+    public GameObject zombiePrefab;
     public GameObject treasurePrefab;
     public GameObject bulletPrefab;
 
@@ -20,7 +21,11 @@ public class References : MonoBehaviour
         player = FindObjectOfType<Player>();
     }
 
-
+    public interface IEnemyType
+    {
+        event Action OnEnemyKilled;
+        void KillEnemy();
+    }
     public interface IMovingObject
     {
         event Action<Vector3> OnReceiveTarget;

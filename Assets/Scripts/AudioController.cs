@@ -16,7 +16,7 @@ public class AudioController : MonoBehaviour
         refs.game.OnNewTreasureSpawned += Game_OnNewTreasureSpawned;  // Get informed on new treasure spawn
     }
 
-    private void Game_OnNewEnemySpawned(Enemy enemy)
+    private void Game_OnNewEnemySpawned(References.IEnemyType enemy)
     {
         enemy.OnEnemyKilled += Enemy_OnEnemyKilled;     // Subscribe to new enemy so play sound when dies
     }

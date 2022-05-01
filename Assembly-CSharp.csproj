@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\References.cs" />
     <Compile Include="Assets\Scripts\Treasure.cs" />
     <Compile Include="Assets\Scripts\UIC.cs" />
+    <Compile Include="Assets\Scripts\Zombie.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

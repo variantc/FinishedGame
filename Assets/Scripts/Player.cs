@@ -72,15 +72,13 @@ public class Player : MonoBehaviour, References.IMovingObject
         if (other.gameObject.tag == "Treasure")
         {
             OnPlayerScore?.Invoke();
-            //Destroy(other.gameObject);
-            //collectAudioSource.Play();
             other.gameObject.GetComponent<Treasure>().CollectTreasure();
         }
     }
 
-    void SetMovementActivity(bool active)
-    {
-        movement.enabled = active;
-        Debug.Log("movement = " + active);
-    }
+    //void SetMovementActivity(bool active)
+    //{
+    //    movement.enabled = active;
+    //    Debug.Log("movement = " + active);
+    //}
 }

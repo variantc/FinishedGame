@@ -3,12 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, References.IMovingObject
+public class Enemy : MonoBehaviour, References.IMovingObject, References.IEnemyType
 {
     public event Action<Vector3> OnReceiveTarget;
     public event Action OnEnemyKilled;
-
-    References refs;
 
     public float setSpeed;                      // Public property to set in inspector - assigned to 
     public float speed { get; set; }            // speed in Start(), below
