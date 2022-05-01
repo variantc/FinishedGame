@@ -6,6 +6,8 @@ using UnityEngine;
 public class Game : MonoBehaviour
 {
     public event Action<int> OnUpdatedScore;
+    public event Action<Enemy> OnNewEnemySpawned;
+    public event Action<Treasure> OnNewTreasureSpawned;
 
     References refs;
 
@@ -40,7 +42,7 @@ public class Game : MonoBehaviour
 
         if (enemySpawnClock >= enemySpawnTime)
         {
-            Instantiate(refs.enemyPrefab, enemySpawnPosArray[UnityEngine.Random.Range(0,enemySpawnPosArray.Length)]);
+            SpawnEnemy();
             enemySpawnClock = 0f;
         }
         if (treasureSpawnClock >= treasureSpawnTime)
@@ -50,14 +52,27 @@ public class Game : MonoBehaviour
         }
     }
 
+    void SpawnEnemy()
+    {
+        Enemy enemy = Instantiate(
+            refs.enemyPrefab, 
+            enemySpawnPosArray[UnityEngine.Random.Range(0, enemySpawnPosArray.Length)]
+            ).GetComponent<Enemy>();
+
+        OnNewEnemySpawned?.Invoke(enemy);
+    }
+
     void SpawnTreasure()
     {
-        Instantiate(
+        Treasure treasure = Instantiate(
             refs.treasurePrefab, 
             new Vector3(
                 UnityEngine.Random.Range(-13f, 13f),
                 0f,
                 UnityEngine.Random.Range(-13f, 13f)), 
-            Quaternion.identity);
+            Quaternion.identity
+            ).GetComponent<Treasure>();
+
+        OnNewTreasureSpawned?.Invoke(treasure);
     }
 }

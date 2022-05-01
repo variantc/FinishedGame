@@ -6,6 +6,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour, References.IMovingObject
 {
     public event Action<Vector3> OnReceiveTarget;
+    public event Action OnEnemyKilled;
+
+    References refs;
 
     public float setSpeed;                      // Public property to set in inspector - assigned to 
     public float speed { get; set; }            // speed in Start(), below
@@ -18,7 +21,7 @@ public class Enemy : MonoBehaviour, References.IMovingObject
         speed = setSpeed;
         SetTarget();
     }
-
+    
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -36,5 +39,11 @@ public class Enemy : MonoBehaviour, References.IMovingObject
                 UnityEngine.Random.Range(-13f, 13f),
                 0f,
                 UnityEngine.Random.Range(-13f, 13f)));
+    }
+
+    public void KillEnemy ()
+    {
+        OnEnemyKilled?.Invoke();
+        Destroy(this.gameObject);
     }
 }

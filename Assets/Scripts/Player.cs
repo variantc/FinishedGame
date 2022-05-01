@@ -18,6 +18,7 @@ public class Player : MonoBehaviour, References.IMovingObject
     References refs;
     Movement movement;
 
+    AudioSource collectAudioSource;
 
     void Start()
     {
@@ -26,6 +27,8 @@ public class Player : MonoBehaviour, References.IMovingObject
         speed = setSpeed;
         refs.mouse3D.OnMouseLeftClick += Mouse3D_OnMouseLeftClick;  // Register function with Mouse3D.OnMouseLeftClick
         refs.mouse3D.OnMouseRightClick += Mouse3D_OnMouseRightClick;  // Register function with Mouse3D.OnMouseRightClick
+
+        collectAudioSource = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
@@ -69,7 +72,9 @@ public class Player : MonoBehaviour, References.IMovingObject
         if (other.gameObject.tag == "Treasure")
         {
             OnPlayerScore?.Invoke();
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
+            //collectAudioSource.Play();
+            other.gameObject.GetComponent<Treasure>().CollectTreasure();
         }
     }
 

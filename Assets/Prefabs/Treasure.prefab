@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5181709354281688646}
   - component: {fileID: 786350161726859057}
   - component: {fileID: 4909644724505304177}
+  - component: {fileID: 351229042337410260}
   m_Layer: 0
   m_Name: Treasure
   m_TagString: Treasure
@@ -94,3 +95,15 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &351229042337410260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8217920712867791166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d931b392e5cd9b847a88776ccd2bdaaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
