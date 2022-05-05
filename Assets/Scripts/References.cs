@@ -34,7 +34,8 @@ public class References : MonoBehaviour
     }
     public interface IShootingObject
     {
-        event Action<Vector3> OnReceiveTarget;
+        event Action<Vector3> OnShootToTarget;
         Transform transform { get; }
+        GameObject gameObject { get; }
     }
 }

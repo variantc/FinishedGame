@@ -8,7 +8,7 @@ public class Movement : MonoBehaviour
     Vector3 target;
     bool hasTarget = false;
     References.IMovingObject movingGameObject;
-    Transform objTransform;
+    //Transform objTransform;
 
     private void Start()
     {

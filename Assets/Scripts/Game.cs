@@ -24,11 +24,11 @@ public class Game : MonoBehaviour
     void Start()
     {
         refs = GetComponent<References>();
-        refs.player.OnPlayerScore += Player_OnPlayerScore;
+        refs.player.OnTreasurePickup += Player_OnTreasurePickup;
         SpawnTreasure();
     }
 
-    private void Player_OnPlayerScore()
+    private void Player_OnTreasurePickup()
     {
         score++;
         OnUpdatedScore?.Invoke(score);
