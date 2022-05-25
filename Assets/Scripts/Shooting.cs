@@ -10,7 +10,8 @@ public class Shooting : MonoBehaviour
     References refs;
     References.IShootingObject shootinGameObject;
 
-    int shots = 0;
+    public int shots = 0;
+    int reloadAmount = 5;
 
     void Start()
     {
@@ -24,7 +25,7 @@ public class Shooting : MonoBehaviour
 
     private void Shooting_OnTreasurePickup()
     {
-        ChangeShotsLeft(1);
+        ChangeShotsLeft(reloadAmount);
     }
 
     void ChangeShotsLeft(int shotChange)
