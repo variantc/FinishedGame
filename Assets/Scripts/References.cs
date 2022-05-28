@@ -8,6 +8,7 @@ public class References : MonoBehaviour
     public Game game;
     public Mouse3D mouse3D;
     public Player player;
+    public AudioController audioController;
     
     public GameObject enemyPrefab;
     public GameObject enemyZombiePrefab;
@@ -20,6 +21,7 @@ public class References : MonoBehaviour
         game = GetComponent<Game>();
         mouse3D = GetComponent<Mouse3D>();
         player = FindObjectOfType<Player>();
+        audioController = GetComponent<AudioController>();
     }
 
     public interface IEnemyType

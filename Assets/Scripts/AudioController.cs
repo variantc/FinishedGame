@@ -6,6 +6,7 @@ public class AudioController : MonoBehaviour
 {
     public AudioSource collectAudioSource;
     public AudioSource enemyKilledAudioSource;
+    public AudioSource emptyFireAudioSource;
 
     References refs;
 

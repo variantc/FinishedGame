@@ -9,6 +9,7 @@ public class UIC : MonoBehaviour
     References refs;
     public Text scoreText;
     public Text shotsText;
+    public Text gameOverText;
 
     private void Start()
     {
@@ -17,6 +18,12 @@ public class UIC : MonoBehaviour
         shotsText.text = "Shots: 0";
         refs.game.OnUpdatedScore += Game_OnUpdatedScore;
         refs.player.GetComponent<Shooting>().OnShotNumberChanged += Player_OnShotNumberChanged;
+        refs.player.OnPlayerKilled += Player_OnPlayerKilled;
+    }
+
+    private void Player_OnPlayerKilled()
+    {
+        gameOverText.text += "GAME OVER!";
     }
 
     private void Player_OnShotNumberChanged(int shots)

@@ -50,5 +50,13 @@ public class Shooting : MonoBehaviour
             bullet.SetDirection(this.transform.position, obj);
             ChangeShotsLeft(-1);
         }
+        else
+        {
+            // no bullets so play empty sound (if player)
+            if (this.gameObject.GetComponent<Player>())
+            {
+                refs.audioController.emptyFireAudioSource.Play();
+            }
+        }
     }
 }

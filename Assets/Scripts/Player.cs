@@ -7,6 +7,7 @@ public class Player : MonoBehaviour, References.IMovingObject, References.IShoot
 {
     public event Action<Vector3> OnReceiveTarget;
     public event Action<Vector3> OnShootToTarget;
+    public event Action OnPlayerKilled;
     public event Action OnTreasurePickup;
 
     public float setSpeed;                      // Public property to set in inspector - assigned to 
@@ -52,6 +53,11 @@ public class Player : MonoBehaviour, References.IMovingObject, References.IShoot
         {
             OnTreasurePickup?.Invoke();
             other.gameObject.GetComponent<Treasure>().CollectTreasure();
+        }
+        if (other.gameObject.tag == "Destroyer")
+        {
+            OnPlayerKilled?.Invoke();
+            Destroy(this.gameObject);
         }
     }
 }

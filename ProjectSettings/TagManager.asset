@@ -9,6 +9,7 @@ TagManager:
   - Treasure
   - Bullet
   - Player Bullet
+  - Destroyer
   layers:
   - Default
   - TransparentFX

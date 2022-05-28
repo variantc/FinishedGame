@@ -25,7 +25,13 @@ public class Game : MonoBehaviour
     {
         refs = GetComponent<References>();
         refs.player.OnTreasurePickup += Player_OnTreasurePickup;
+        refs.player.OnPlayerKilled += Player_OnPlayerKilled;
         SpawnTreasure();
+    }
+
+    private void Player_OnPlayerKilled()
+    {
+        Debug.Log("GAME OVER");
     }
 
     private void Player_OnTreasurePickup()
