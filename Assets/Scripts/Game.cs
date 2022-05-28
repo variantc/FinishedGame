@@ -56,12 +56,23 @@ public class Game : MonoBehaviour
     {
         GameObject enemyTypePrefab;
 
-        if (UnityEngine.Random.Range(0,1f) > 0.75f)
+        switch (UnityEngine.Random.Range(1,7))
         {
-            enemyTypePrefab = refs.zombiePrefab;
-        } else
-        {
-            enemyTypePrefab = refs.enemyPrefab;
+            case 1:
+            case 2:
+            case 3:
+                enemyTypePrefab = refs.enemyZombiePrefab;
+                break;
+            case 4:
+            case 5:
+                enemyTypePrefab = refs.enemyPrefab;
+                break;
+            case 6:
+                enemyTypePrefab = refs.enemyShooterPrefab;
+                break;
+            default:
+                enemyTypePrefab = refs.enemyPrefab;
+                break;
         }
 
         References.IEnemyType enemy = Instantiate(

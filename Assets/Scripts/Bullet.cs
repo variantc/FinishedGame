@@ -24,10 +24,32 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // this Bullet should be a child of the Shooter's gameObject.transform
+        // Therefore, only care if it is not this collider
+        if (this.transform.parent == other.gameObject.transform) { return; }
+
         if (other.gameObject.tag == "Enemy")
         {
             other.gameObject.GetComponent<References.IEnemyType>().KillEnemy();
             Destroy(this.gameObject);
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Bullet")
+        {
+            Destroy(this.gameObject);   // since the other GO is Bullet too, both die
+            // CARE - Any other functionality here will be called twice
+        }
+        if (collision.gameObject.tag == "Player")
+        {
+            Debug.Log("Player Hit");
+        }
+    }
+
+    void SetLayer()
+    {
+
     }
 }

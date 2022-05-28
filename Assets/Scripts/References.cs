@@ -10,7 +10,8 @@ public class References : MonoBehaviour
     public Player player;
     
     public GameObject enemyPrefab;
-    public GameObject zombiePrefab;
+    public GameObject enemyZombiePrefab;
+    public GameObject enemyShooterPrefab;
     public GameObject treasurePrefab;
     public GameObject bulletPrefab;
 

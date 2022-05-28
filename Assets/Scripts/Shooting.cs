@@ -39,6 +39,14 @@ public class Shooting : MonoBehaviour
         if (shots > 0)
         {
             Bullet bullet = Instantiate(refs.bulletPrefab, this.transform.position, Quaternion.identity).GetComponent<Bullet>();
+            
+            bullet.gameObject.transform.SetParent(this.transform);  // Set bullet as child of gameobject that shot
+
+            // If the player has shot, tag the bullet as Player
+            // TODO: Improve
+            if (this.gameObject.GetComponent<Player>() == true)
+                bullet.gameObject.layer = 12;   // Set to Player Bullet layer
+
             bullet.SetDirection(this.transform.position, obj);
             ChangeShotsLeft(-1);
         }
