@@ -6,6 +6,7 @@ using UnityEngine;
 public class Game : MonoBehaviour
 {
     public event Action<int> OnUpdatedScore;
+    public event Action<int> OnUpdatedKills;
     public event Action<References.IEnemyType> OnNewEnemySpawned;
     public event Action<Treasure> OnNewTreasureSpawned;
 
@@ -19,6 +20,7 @@ public class Game : MonoBehaviour
     public Transform[] enemySpawnPosArray;
 
     public int score = 0;
+    public int kills = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +34,12 @@ public class Game : MonoBehaviour
     private void Player_OnPlayerKilled()
     {
         Debug.Log("GAME OVER");
+    }
+
+    private void Enemy_OnEnemyKilled()
+    {
+        kills++;
+        OnUpdatedKills?.Invoke(kills);
     }
 
     private void Player_OnTreasurePickup()
@@ -85,7 +93,9 @@ public class Game : MonoBehaviour
             enemyTypePrefab, 
             enemySpawnPosArray[UnityEngine.Random.Range(0, enemySpawnPosArray.Length)]
             ).GetComponent<References.IEnemyType>();
-        
+
+        enemy.OnEnemyKilled += Enemy_OnEnemyKilled;     // register to OnEnemyKilled
+
         OnNewEnemySpawned?.Invoke(enemy);
     }
 

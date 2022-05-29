@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
 
     float destroyTime = 4f;
     float destroyClock = 0f;
+    bool hasDirection = false;
 
     private void FixedUpdate()
     {
@@ -18,8 +19,12 @@ public class Bullet : MonoBehaviour
 
     public void SetDirection(Vector3 startVec, Vector3 targetVec)
     {
+        if (hasDirection)
+            return;
+
         Vector3 direction = (targetVec - startVec).normalized;
         GetComponent<Rigidbody>().AddForce(bulletForce * direction);
+        hasDirection = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -46,10 +51,5 @@ public class Bullet : MonoBehaviour
         {
             Debug.Log("Player Hit");
         }
-    }
-
-    void SetLayer()
-    {
-
     }
 }
